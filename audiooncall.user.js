@@ -16,7 +16,7 @@
     var interval = setInterval(function () {
         var select = $("queue-counter-widget > div > div.indicators-container > div.contacts-indicator-container > acd-text-indicator > div > div > div.value-container > div > span");
         var hiddenSelect = $("queue-counter-widget > div > div.indicators-container.ng-hide > div.contacts-indicator-container > acd-text-indicator > div > div > div.value-container > div > span");
-        if (!hiddenSelect.length && select.length && !played) {
+        if (!hiddenSelect.length && select.length) {
             console.log(hiddenSelect.length)
             console.log(select.length + "select")
             var count = Number(select[0].textContent.replace(/\\D/g, ""))
@@ -57,5 +57,5 @@
             console.log("cleared Played");
             played = false;
         }
-    }, 1000);
+    }, 10000);
     })();
