@@ -57,5 +57,5 @@
             console.log("cleared Played");
             played = false;
         }
-    }, 10000);
+    }, 20000);
     })();
