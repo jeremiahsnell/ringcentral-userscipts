@@ -6,6 +6,8 @@
 // @match        https://na1.nice-incontact.com/*
 // @grant        none
 // @run-at       document-idle
+// @updateURL    https://raw.githubusercontent.com/jeremiahsnell/ringcentral-userscipts/main/AudioOnCall.js
+// @downloadURL  https://raw.githubusercontent.com/jeremiahsnell/ringcentral-userscipts/main/AudioOnCall.js
 // ==/UserScript==
 
 (function() {
