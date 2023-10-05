@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Sound Script
 // @namespace    https://na1.nice-incontact.com/
-// @version      1.0.1
+// @version      1.1
 // @description  Read data from the DOM and play a sound on https://na1.nice-incontact.com/mydashboard/#/myDashboards
 // @match        https://na1.nice-incontact.com/*
 // @grant        none
@@ -12,13 +12,10 @@
 
 (function() {
     var bell = new Audio("https://freesound.org/data/previews/686/686558_321967-lq.mp3");
-    var played = false;
     var interval = setInterval(function () {
         var select = $("queue-counter-widget > div > div.indicators-container > div.contacts-indicator-container > acd-text-indicator > div > div > div.value-container > div > span");
         var hiddenSelect = $("queue-counter-widget > div > div.indicators-container.ng-hide > div.contacts-indicator-container > acd-text-indicator > div > div > div.value-container > div > span");
         if (!hiddenSelect.length && select.length) {
-            console.log(hiddenSelect.length)
-            console.log(select.length + "select")
             var count = Number(select[0].textContent.replace(/\\D/g, ""))
             var rowContainer = $("agent-list-widget > div > div > div > nice-grid > div > div > div > div.ag-root-wrapper-body > div > div.ag-body.ag-row-no-animation > div.ag-body-viewport-wrapper > div > div > div");
     
@@ -41,21 +38,13 @@
             }, {});
     
             var loggedCount = 0;
-            loggedCount + countDict.Available + countDict['Unavailable: InboundPending'];
-    
+            loggedCount = loggedCount + countDict.Available || 0 + countDict['Unavailable: InboundPending'] || 0 + countDict['Unavailable: CallbackPending'] || 0;
             console.log(loggedCount);
             console.log(count+ ': count');
             if (count > loggedCount) {
-                played = true;
                 bell.play();
-    
                 console.log("play audio");
             }
-        } else if (hiddenSelect.length == 1 && played) {
-            console.log(hiddenSelect.length + "cphidden")
-            console.log(select.length + "cpselect")
-            console.log("cleared Played");
-            played = false;
         }
     }, 20000);
     })();
