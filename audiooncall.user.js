@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Sound Script
 // @namespace    https://na1.nice-incontact.com/
-// @version      1.1
+// @version      1.2
 // @description  Read data from the DOM and play a sound on https://na1.nice-incontact.com/mydashboard/#/myDashboards
 // @match        https://na1.nice-incontact.com/*
 // @grant        none
@@ -46,5 +46,5 @@
                 console.log("play audio");
             }
         }
-    }, 20000);
+    }, 10000);
     })();
